@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Metatags de SEO Essenciais (Serão atualizadas dinamicamente) -->
+    <title>Zenith Labs - Soluções digitais que geram resultados reais.</title>
+    <meta id="meta-description" name="description" content="Zenith Labs é uma agência digital especializada em desenvolvimento de sites, SEO e UI/UX design. Transformamos ideias em realidade digital.">
+    <meta name="keywords" content="zenith labs, agência digital, desenvolvimento web, seo, marketing digital, criação de sites">
+    <meta name="author" content="Zenith Labs">
+    <link rel="canonical" href="https://www.zenithlabs.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zenithlabs.com">
+    <meta property="og:title" content="Zenith Labs - Soluções Digitais Inovadoras">
+    <meta property="og:description" content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=🦉+Zenith+Labs">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.zenithlabs.com">
+    <meta property="twitter:title" content="Zenith Labs - Soluções Digitais Inovadoras">
+    <meta property="twitter:description" content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=🦉+Zenith+Labs">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Tailwind CSS e Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Estilos personalizados e animações -->
+    <style>
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f1f5f9;
+        }
+        #inicio {
+            background-color: transparent;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .animated-gradient-bg {
+            background: linear-gradient(-45deg, #0a0a0a, #111827, #1e1b4b, #172554);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .static-radial-bg {
+            background-color: #0a0a0a;
+            background-image: radial-gradient(circle at 50% 50%, rgba(23, 37, 84, 0.3) 0%, rgba(10, 10, 10, 0) 60%);
+        }
+        /* Estilos do Mascote */
+        #mascote-nexus {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            z-index: 9999;
+            pointer-events: all; /* Habilita clique */
+            cursor: pointer;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease;
+            opacity: 0;
+        }
+        /* Estilos do Balão de Fala */
+        #mascote-speech-bubble {
+            position: absolute;
+            bottom: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f1f5f9;
+            color: #1e293b;
+            padding: 8px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        #mascote-speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #f1f5f9 transparent transparent transparent;
+        }
+        /* Estilos do Assistente Virtual (Chat) */
+        #assistente-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #374151;
+            border-radius: 1rem;
+            color: white;
+            z-index: 10000;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            pointer-events: none;
+        }
+        #assistente-chat.visible {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: all;
+        }
+        /* Estilos para o conteúdo do Artigo */
+        .prose-custom {
+            color: #cbd5e1;
+        }
+        .prose-custom h1, .prose-custom h2, .prose-custom h3 {
+            color: #f1f5f9;
+        }
+        .prose-custom p {
+            line-height: 1.7;
+            text-align: justify;
+        }
+        .prose-custom a {
+            color: #60a5fa;
+        }
+        .prose-custom strong {
+            color: #f8fafc;
+        }
+        /* Animação para cards */
+        .animated-card, .blog-post {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .animated-card:hover, .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+        }
+    </style>
+</head>
+<body class="text-slate-100">
+
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Mascote Nexus com Balão de Fala -->
+    <div id="mascote-nexus">
+        <div id="mascote-speech-bubble">
+            Como posso te ajudar?
+        </div>
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad-olhos" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#8b5cf6"/>
+                    <stop offset="100%" stop-color="#3b82f6"/>
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                    <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <g id="coruja-corpo" style="transform-origin: center center;">
+                <path d="M60 110C87.6142 110 110 87.6142 110 60C110 32.3858 87.6142 10 60 10C32.3858 10 10 32.3858 10 60C10 87.6142 32.3858 110 60 110Z" fill="#1e293b" fill-opacity="0.7"/>
+                <circle cx="45" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)"/>
+                <circle cx="75" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)"/>
+                <circle cx="45" cy="50" r="4" fill="white"/>
+                <circle cx="75" cy="50" r="4" fill="white"/>
+                <path d="M52 70L60 80L68 70" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M30 25C20 35 18 50 25 65" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
+                <path d="M90 25C100 35 102 50 95 65" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Janela do Assistente Virtual -->
+    <div id="assistente-chat">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-3">
+                <h4 class="font-bold text-lg">Nexus, seu assistente</h4>
+                <button id="fechar-chat" class="text-slate-400 hover:text-white">&times;</button>
+            </div>
+            <p class="text-sm text-slate-300 mb-4">Olá! Estou aqui para ajudar. O que você gostaria de ver?</p>
+            <div class="flex flex-col gap-2">
+                <button class="chat-btn w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors" data-target="#servicos">Nossos Serviços</button>
+                <!-- MUDANÇA: Botão agora é um link para o WhatsApp -->
+                <a href="https://wa.me/5571992976844?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="block w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors">Pedir um Orçamento</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#inicio" class="flex items-center gap-2">
+                <!-- Logotipo em texto com gradiente -->
+                <span class="text-3xl font-bold text-gradient">Zenith Labs</span>
+            </a>
+            <nav class="hidden lg:flex space-x-6">
+                <a href="#inicio" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Início</a>
+                <a href="#servicos" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Serviços</a>
+                <a href="#processo" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Processo</a>
+                <a href="#diagnostico-seo" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Diagnóstico SEO</a>
+                <a href="#calculadora-roi" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Calculadora ROI</a>
+                <a href="#blog" class="nav-link text-slate-200 hover:text-white transition-colors duration-300" data-page="blog-page">Blog</a>
+                <a href="#contato" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Contato</a>
+            </nav>
+            <a href="#contato" class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+                Peça um Orçamento
+            </a>
+            <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden lg:hidden">
+            <nav class="px-6 pt-2 pb-4 space-y-2">
+                <a href="#inicio" class="nav-link block text-slate-200 hover:text-white">Início</a>
+                <a href="#servicos" class="nav-link block text-slate-200 hover:text-white">Serviços</a>
+                <a href="#processo" class="nav-link block text-slate-200 hover:text-white">Processo</a>
+                <a href="#diagnostico-seo" class="nav-link block text-slate-200 hover:text-white">Diagnóstico SEO</a>
+                <a href="#calculadora-roi" class="nav-link block text-slate-200 hover:text-white">Calculadora ROI</a>
+                <a href="#blog" class="nav-link block text-slate-200 hover:text-white" data-page="blog-page">Blog</a>
+                <a href="#contato" class="nav-link block text-slate-200 hover:text-white">Contato</a>
+                <a href="#contato" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-center">Peça um Orçamento</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="landing-page">
+            <!-- Seção Inicial (Hero) -->
+            <section id="inicio" class="min-h-screen flex items-center justify-center text-center pt-20">
+                <div class="container mx-auto px-6 fade-in-section is-visible">
+                    <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+                        Transformamos Ideias em <br class="hidden md:block">
+                        <span class="text-gradient">Realidade Digital</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                       Soluções digitais que geram resultados reais.
+                    </p>
+                    <a href="#servicos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
+                        Conheça nossos serviços
+                    </a>
+                </div>
+            </section>
+
+            <!-- Seção de Serviços -->
+            <section id="servicos" class="py-20 animated-gradient-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos Serviços</h2>
+                        <p class="text-slate-300 mt-2">Soluções completas para sua presença online.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Desenvolvimento Web</h3><p class="text-slate-300 text-justify">Criação de sites e landing pages responsivos, otimizados para SEO e focados na conversão.</p></article>
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Sistemas Web</h3><p class="text-slate-300 text-justify">Desenvolvimento de aplicações e sistemas sob medida para automatizar processos e escalar seu negócio.</p></article>
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Consultoria SEO</h3><p class="text-slate-300 text-justify">Análise e otimização do seu site para alcançar as primeiras posições nos mecanismos de busca.</p></article>
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">UI/UX Design</h3><p class="text-slate-300 text-justify">Projetamos interfaces intuitivas e atraentes que proporcionam a melhor experiência para o usuário.</p></article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Infográfico do Processo -->
+            <section id="processo" class="py-20 static-radial-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Nosso Processo de Trabalho</h2>
+                        <p class="text-slate-300 mt-2">Da ideia ao lançamento, seguimos um caminho claro para garantir o sucesso do seu projeto.</p>
+                    </div>
+                    <div class="relative fade-in-section">
+                        <!-- Linha do tempo -->
+                        <div class="hidden md:block border-l-2 border-blue-500 absolute h-full top-0" style="left: 50%; transform: translateX(-1px);"></div>
+                        <!-- Itens do processo -->
+                        <div class="space-y-12 md:space-y-0">
+                            <!-- Item 1 -->
+                            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                                <div class="md:text-right md:pr-8">
+                                    <h3 class="text-2xl font-bold text-gradient">01. Briefing e Imersão</h3>
+                                    <p class="text-slate-300 mt-2">O primeiro passo é entender profundamente seus objetivos, seu público e seu mercado. Realizamos uma imersão completa no seu negócio.</p>
+                                </div>
+                                <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="coffee" class="text-blue-400"></i></div>
+                                </div>
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                                <div class="flex justify-center md:justify-end mt-4 md:mt-0 md:pr-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="compass" class="text-blue-400"></i></div>
+                                </div>
+                                <div class="md:text-left md:pl-8">
+                                    <h3 class="text-2xl font-bold text-gradient">02. Estratégia e Planejamento</h3>
+                                    <p class="text-slate-300 mt-2">Com base na imersão, traçamos um plano estratégico detalhado, definindo tecnologias, arquitetura da informação e cronograma.</p>
+                                </div>
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                                <div class="md:text-right md:pr-8">
+                                    <h3 class="text-2xl font-bold text-gradient">03. Design e Prototipação</h3>
+                                    <p class="text-slate-300 mt-2">Criamos o design da interface (UI) e a experiência do usuário (UX), construindo protótipos interativos para validação antes do desenvolvimento.</p>
+                                </div>
+                                <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="drafting-compass" class="text-blue-400"></i></div>
+                                </div>
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                               <div class="flex justify-center md:justify-end mt-4 md:mt-0 md:pr-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="code-2" class="text-blue-400"></i></div>
+                                </div>
+                                <div class="md:text-left md:pl-8">
+                                    <h3 class="text-2xl font-bold text-gradient">04. Desenvolvimento</h3>
+                                    <p class="text-slate-300 mt-2">Nossos desenvolvedores transformam o design em um produto funcional, utilizando as melhores práticas e tecnologias do mercado.</p>
+                                </div>
+                            </div>
+                             <!-- Item 5 -->
+                            <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+                                <div class="md:text-right md:pr-8">
+                                    <h3 class="text-2xl font-bold text-gradient">05. Lançamento e Suporte</h3>
+                                    <p class="text-slate-300 mt-2">Após testes rigorosos, lançamos o projeto. Oferecemos suporte contínuo para garantir performance e evolução constante.</p>
+                                </div>
+                                 <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="rocket" class="text-blue-400"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Diagnóstico SEO -->
+            <section id="diagnostico-seo" class="py-20 static-radial-bg">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-3xl mx-auto text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Diagnóstico Rápido de SEO</h2>
+                        <p class="text-slate-300 mt-2">Descubra como melhorar o posicionamento do seu site. Insira a URL e receba uma análise gratuita e instantânea.</p>
+                    </div>
+                    <div class="max-w-2xl mx-auto fade-in-section">
+                        <form id="seo-form" class="flex flex-col sm:flex-row gap-4">
+                            <input type="url" id="seo-url" placeholder="https://seusite.com.br" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Analisar Agora</button>
+                        </form>
+                        <div id="seo-results" class="mt-8"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Calculadora ROI -->
+            <section id="calculadora-roi" class="py-20 animated-gradient-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Calculadora de ROI</h2>
+                        <p class="text-slate-300 mt-2">Estime o potencial de retorno sobre o investimento em marketing digital para o seu negócio.</p>
+                    </div>
+                    <div class="max-w-4xl mx-auto fade-in-section grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        <!-- Inputs -->
+                        <div id="roi-calculator" class="space-y-6">
+                            <div>
+                                <label for="investment" class="block text-sm font-medium text-slate-200 mb-2">Investimento Mensal (R$)</label>
+                                <input type="number" id="investment" value="1000" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="cpc" class="block text-sm font-medium text-slate-200 mb-2">Custo por Clique (CPC) Médio (R$)</label>
+                                <input type="number" id="cpc" value="1.50" step="0.01" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="conversion-rate" class="block text-sm font-medium text-slate-200 mb-2">Taxa de Conversão em Leads (%)</label>
+                                <input type="number" id="conversion-rate" value="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                             <div>
+                                <label for="ticket" class="block text-sm font-medium text-slate-200 mb-2">Ticket Médio por Cliente (R$)</label>
+                                <input type="number" id="ticket" value="500" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <!-- Resultados -->
+                        <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+                            <h3 class="text-xl font-bold text-white mb-6 text-center">Resultados Estimados</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos Visitantes:</span><span id="roi-visitors" class="text-2xl font-bold text-white">0</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos Leads (Contatos):</span><span id="roi-leads" class="text-2xl font-bold text-white">0</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Custo por Lead:</span><span id="roi-cpl" class="text-2xl font-bold text-white">R$ 0,00</span></div>
+                                <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-700"><span class="text-slate-200 font-semibold">Receita Estimada:</span><span id="roi-revenue" class="text-2xl font-bold text-gradient">R$ 0,00</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Blog (Preview) -->
+            <section id="blog" class="py-20 static-radial-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Nosso Blog</h2>
+                        <p class="text-slate-300 mt-2">Dicas, tendências e insights sobre o universo digital.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Post 1 -->
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                            <img src="images/cards/seo.jpg" alt="Gráfico com palavras-chave e lupas representando uma análise de SEO" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">SEO</p>
+                                <h3 class="text-xl font-bold text-white mb-2">5 Erros de SEO que Você Pode Estar Cometendo</h3>
+                                <p class="text-slate-300 text-justify">Descubra os erros mais comuns que impedem seu site de ranquear bem no Google e como corrigi-los hoje mesmo.</p>
+                            </div>
+                        </article>
+                        <!-- Post 2 -->
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                            <img src="images/cards/design.jpg" alt="Pessoa desenhando o wireframe de um aplicativo em um tablet" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">UI/UX Design</p>
+                                <h3 class="text-xl font-bold text-white mb-2">A Importância da Experiência do Usuário para Negócios</h3>
+                                <p class="text-slate-300 text-justify">Entenda como um bom design focado no usuário pode aumentar suas taxas de conversão e fidelizar clientes.</p>
+                            </div>
+                        </article>
+                        <!-- Post 3 -->
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                            <img src="images/cards/desenvolvimento.jpg" alt="Tela de computador exibindo linhas de código de programação" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">Desenvolvimento</p>
+                                <h3 class="text-xl font-bold text-white mb-2">React vs. Vue: Qual escolher para seu próximo projeto?</h3>
+                                <p class="text-slate-300 text-justify">Uma análise comparativa entre dois dos frameworks JavaScript mais populares da atualidade.</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="text-center mt-12 fade-in-section">
+                        <a href="#blog" data-page="blog-page" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
+                            Ver todos os posts
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Sobre Nós -->
+            <section id="sobre" class="py-20 animated-gradient-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos Pilares</h2>
+                        <p class="text-slate-300 mt-2">A base do nosso trabalho e da nossa parceria com você.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Missão -->
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-2xl font-bold text-gradient mb-4">Missão</h3>
+                            <p class="text-slate-300 text-justify">Transformar ideias em realidade digital, desenvolvendo soluções inovadoras e personalizadas que impulsionam o sucesso e o crescimento dos nossos clientes no ambiente online.</p>
+                        </article>
+                        <!-- Visão -->
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-2xl font-bold text-gradient mb-4">Visão</h3>
+                            <p class="text-slate-300 text-justify">Ser uma agência de referência no mercado digital, reconhecida pela excelência criativa, pela aplicação de tecnologias de ponta e por construir parcerias de longo prazo baseadas em resultados.</p>
+                        </article>
+                        <!-- Valores -->
+                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-2xl font-bold text-gradient mb-4">Valores</h3>
+                            <p class="text-slate-300 text-justify">Compromisso com a qualidade, inovação constante, transparência em todas as etapas, colaboração com nossos clientes e paixão por resolver desafios complexos.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção de Contato -->
+            <section id="contato" class="py-20 static-radial-bg">
+                <div class="container mx-auto px-6"><div class="text-center mb-12 fade-in-section"><h2 class="text-3xl md:text-4xl font-bold text-white">Vamos Conversar?</h2><p class="text-slate-300 mt-2">Envie sua ideia ou projeto e vamos construir algo incrível juntos.</p></div><div class="max-w-2xl mx-auto fade-in-section"><form action="https://formspree.io/f/movlewaa" method="POST" class="space-y-6"><div><label for="name" class="sr-only">Nome</label><input type="text" name="name" id="name" placeholder="Seu nome" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></div><div><label for="email" class="sr-only">Email</label><input type="email" name="email" id="email" placeholder="Seu e-mail" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></div><div><label for="message" class="sr-only">Mensagem</label><textarea name="message" id="message" rows="5" placeholder="Sua mensagem" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div><div class="text-center"><button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300">Enviar Mensagem</button></div></form></div></div>
+            </section>
+        </div>
+
+        <!-- Página do Blog (Listagem) -->
+        <div id="blog-page" class="hidden">
+            <section class="py-32 static-radial-bg">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl md:text-5xl font-black text-white">Nosso Blog</h1>
+                        <p class="text-lg text-slate-300 mt-2">Dicas, tendências e insights sobre o universo digital.</p>
+                    </div>
+                    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Post Card 1 -->
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-1">
+                            <img src="images/cards/seo.jpg" alt="Gráfico com palavras-chave e lupas representando uma análise de SEO" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">SEO</p>
+                                <h2 class="text-xl font-bold text-white">5 Erros de SEO que Você Pode Estar Cometendo</h2>
+                            </div>
+                        </article>
+                        <!-- Post Card 2 -->
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-2">
+                            <img src="images/cards/design.jpg" alt="Pessoa desenhando o wireframe de um aplicativo em um tablet" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">UI/UX Design</p>
+                                <h2 class="text-xl font-bold text-white">A Importância da Experiência do Usuário para Negócios</h2>
+                            </div>
+                        </article>
+                         <!-- Post Card 3 -->
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-3">
+                            <img src="images/cards/desenvolvimento.jpg" alt="Tela de computador exibindo linhas de código de programação" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">Desenvolvimento</p>
+                                <h2 class="text-xl font-bold text-white">React vs. Vue: Qual escolher para seu próximo projeto?</h2>
+                            </div>
+                        </article>
+                        <!-- Post Card 4 -->
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-4">
+                            <img src="images/cards/seguranca.jpg" alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">Segurança</p>
+                                <h2 class="text-xl font-bold text-white">Cibersegurança para Pequenas Empresas: Um Guia Essencial</h2>
+                            </div>
+                        </article>
+                        <!-- Post Card 5 -->
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-5">
+                            <img src="images/cards/tendencias.jpg" alt="Homem utilizando óculos de realidade virtual em um ambiente futurista" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <p class="text-sm text-blue-400 font-semibold mb-2">Tendências</p>
+                                <h2 class="text-xl font-bold text-white">O Futuro do Web Design: 5 Tendências para 2026</h2>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Página de Artigo Individual -->
+        <div id="post-page" class="hidden">
+            <section class="py-32 static-radial-bg">
+                <div class="container mx-auto px-6 max-w-3xl">
+                    <button class="back-to-blog-btn mb-8 flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
+                        <i data-lucide="arrow-left"></i> Voltar para o Blog
+                    </button>
+                    <img id="post-image" src="" alt="Imagem do Artigo" class="w-full h-64 md:h-96 object-cover rounded-xl mb-8">
+                    <h1 id="post-title" class="text-3xl md:text-5xl font-black text-white leading-tight mb-4"></h1>
+                    <div id="post-meta" class="text-slate-400 mb-8"></div>
+                    <div id="post-content" class="prose-custom text-lg"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-300">
+            <p class="mb-4">
+                Av. Luís Viana Filho, 13223 - São Cristóvão, Salvador - BA, 41500-300 |
+                zenithlabs.contato@gmail.com | (71) 99297-6844
+            </p>
+            <p>&copy; 2024 Zenith Labs. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializa ícones Lucide
+            lucide.createIcons();
+
+            // Lógica para o menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Lógica para animação de fade-in ao rolar a página
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => { observer.observe(section); });
+
+            // --- Lógica do Diagnóstico de SEO ---
+            const seoForm = document.getElementById('seo-form');
+            const seoResultsContainer = document.getElementById('seo-results');
+            
+            seoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const url = document.getElementById('seo-url').value;
+                if (!url) return;
+
+                seoResultsContainer.innerHTML = `<div class="flex justify-center items-center"><div class="loader"></div><p class="ml-4 text-white">Analisando, por favor aguarde...</p></div>`;
+
+                // Simulação de uma análise de SEO.
+                setTimeout(() => {
+                    const results = {
+                        score: Math.floor(Math.random() * (95 - 60 + 1)) + 60,
+                        title: Math.random() > 0.2,
+                        description: Math.random() > 0.3,
+                        h1: Math.random() > 0.1,
+                        alt_tags: Math.random() > 0.4,
+                    };
+
+                    const resultHTML = `
+                        <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
+                            <h4 class="text-xl font-bold text-white mb-4">Resultado para: <span class="text-blue-400">${url}</span></h4>
+                            <div class="flex items-center mb-6">
+                                <p class="text-lg text-slate-200 mr-4">Pontuação Geral de SEO:</p>
+                                <div class="text-4xl font-black text-gradient">${results.score}/100</div>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">${results.title ? '<i data-lucide="check-circle-2" class="text-green-500 mr-2"></i>' : '<i data-lucide="x-circle" class="text-red-500 mr-2"></i>'} Meta Title Otimizado</li>
+                                <li class="flex items-center">${results.description ? '<i data-lucide="check-circle-2" class="text-green-500 mr-2"></i>' : '<i data-lucide="x-circle" class="text-red-500 mr-2"></i>'} Meta Description Presente</li>
+                                <li class="flex items-center">${results.h1 ? '<i data-lucide="check-circle-2" class="text-green-500 mr-2"></i>' : '<i data-lucide="x-circle" class="text-red-500 mr-2"></i>'} Tag H1 única encontrada</li>
+                                <li class="flex items-center">${results.alt_tags ? '<i data-lucide="check-circle-2" class="text-green-500 mr-2"></i>' : '<i data-lucide="x-circle" class="text-red-500 mr-2"></i>'} Imagens com Alt Tags</li>
+                            </ul>
+                            <p class="text-slate-300 mt-6 text-sm">*Esta é uma análise simulada. Para um diagnóstico completo, entre em contato.</p>
+                        </div>
+                    `;
+                    seoResultsContainer.innerHTML = resultHTML;
+                    lucide.createIcons();
+                }, 2000);
+            });
+
+            // --- Lógica da Calculadora de ROI ---
+            const roiCalculator = document.getElementById('roi-calculator');
+            const investmentInput = document.getElementById('investment');
+            const cpcInput = document.getElementById('cpc');
+            const conversionRateInput = document.getElementById('conversion-rate');
+            const ticketInput = document.getElementById('ticket');
+
+            const visitorsOutput = document.getElementById('roi-visitors');
+            const leadsOutput = document.getElementById('roi-leads');
+            const cplOutput = document.getElementById('roi-cpl');
+            const revenueOutput = document.getElementById('roi-revenue');
+
+            function calculateROI() {
+                const investment = parseFloat(investmentInput.value) || 0;
+                const cpc = parseFloat(cpcInput.value) || 0;
+                const conversionRate = parseFloat(conversionRateInput.value) || 0;
+                const ticket = parseFloat(ticketInput.value) || 0;
+
+                const visitors = cpc > 0 ? Math.floor(investment / cpc) : 0;
+                const leads = Math.floor(visitors * (conversionRate / 100));
+                const cpl = leads > 0 ? (investment / leads) : 0;
+                const revenue = leads * ticket;
+
+                visitorsOutput.textContent = visitors.toLocaleString('pt-BR');
+                leadsOutput.textContent = leads.toLocaleString('pt-BR');
+                cplOutput.textContent = cpl.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+                revenueOutput.textContent = revenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            }
+
+            roiCalculator.addEventListener('input', calculateROI);
+            calculateROI();
+        });
+    </script>
+    <script>
+        // --- Lógica do Fundo Interativo e Mascote/Assistente ---
+        try {
+            // --- Lógica do Assistente Virtual Nexus ---
+            const mascot = document.getElementById('mascote-nexus');
+            const speechBubble = document.getElementById('mascote-speech-bubble');
+            const chatWindow = document.getElementById('assistente-chat');
+            const closeChatButton = document.getElementById('fechar-chat');
+            const chatButtons = document.querySelectorAll('.chat-btn');
+
+            let bubbleTimeout;
+            let hideAllTimeout;
+
+            window.addEventListener('scroll', () => {
+                if (bubbleTimeout) clearTimeout(bubbleTimeout);
+                if (hideAllTimeout) clearTimeout(hideAllTimeout);
+
+                if (window.scrollY > 200) {
+                    mascot.style.opacity = '1';
+                } else {
+                    mascot.style.opacity = '0';
+                }
+                speechBubble.style.opacity = '0';
+
+                bubbleTimeout = setTimeout(() => {
+                    if (mascot.style.opacity === '1') {
+                        speechBubble.style.opacity = '1';
+                    }
+                }, 500);
+
+                hideAllTimeout = setTimeout(() => {
+                    mascot.style.opacity = '0';
+                    speechBubble.style.opacity = '0';
+                }, 4000);
+
+                const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+                const y = 20 + scrollPercent * 60;
+                const x = 50 + Math.sin(scrollPercent * Math.PI * 2) * 40;
+                
+                mascot.style.top = `${y}%`;
+                mascot.style.left = `${x}%`;
+            }, { passive: true });
+
+            mascot.addEventListener('click', () => {
+                chatWindow.classList.add('visible');
+            });
+
+            closeChatButton.addEventListener('click', () => {
+                chatWindow.classList.remove('visible');
+            });
+
+            chatButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    chatWindow.classList.remove('visible');
+                });
+            });
+
+
+            // --- Animação do Fundo com Three.js (Efeito Cometa) ---
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.querySelector('#bg-canvas'),
+                alpha: true
+            });
+
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.position.setZ(300);
+
+            function createGlowTexture() {
+                const canvas = document.createElement('canvas');
+                canvas.width = 64;
+                canvas.height = 64;
+                const context = canvas.getContext('2d');
+                const gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+                gradient.addColorStop(0, 'rgba(255,255,255,1)');
+                gradient.addColorStop(0.2, 'rgba(255,255,255,1)');
+                gradient.addColorStop(0.4, 'rgba(200,200,255,0.4)');
+                gradient.addColorStop(1, 'rgba(255,255,255,0)');
+                context.fillStyle = gradient;
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                return new THREE.CanvasTexture(canvas);
+            }
+            
+            const particleTexture = createGlowTexture();
+
+            const starGeometry = new THREE.BufferGeometry();
+            const starVertices = [];
+            for (let i = 0; i < 10000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                starVertices.push(x, y, z);
+            }
+            starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+            const starMaterial = new THREE.PointsMaterial({ color: 0x555555, size: 0.7, transparent: true });
+            const stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+
+            const mouse = new THREE.Vector2();
+            const windowHalf = new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2);
+
+            document.addEventListener('mousemove', (event) => {
+                mouse.x = (event.clientX - windowHalf.x);
+                mouse.y = (event.clientY - windowHalf.y);
+            });
+
+            const trailParticles = 200;
+            const trailGeometry = new THREE.BufferGeometry();
+            const trailPositions = new Float32Array(trailParticles * 3);
+            const trailColors = new Float32Array(trailParticles * 3);
+            const trailAlphas = new Float32Array(trailParticles);
+            
+            const particles = [];
+            const trailPalette = [new THREE.Color(0x3b82f6), new THREE.Color(0x8b5cf6)];
+
+            for (let i = 0; i < trailParticles; i++) {
+                particles.push({ position: new THREE.Vector3(), velocity: new THREE.Vector3(), life: 0, maxLife: Math.random() * 80 + 40 });
+                trailAlphas[i] = 0.0;
+            }
+
+            trailGeometry.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
+            trailGeometry.setAttribute('alpha', new THREE.BufferAttribute(trailAlphas, 1));
+            trailGeometry.setAttribute('color', new THREE.BufferAttribute(trailColors, 3));
+            
+            const trailMaterial = new THREE.PointsMaterial({ size: 4, map: particleTexture, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, vertexColors: true });
+            trailMaterial.onBeforeCompile = shader => {
+                shader.vertexShader = 'attribute float alpha;\n' + shader.vertexShader;
+                shader.vertexShader = shader.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\ngl_PointSize *= alpha;');
+            };
+
+            const trail = new THREE.Points(trailGeometry, trailMaterial);
+            scene.add(trail);
+
+            let currentParticle = 0;
+
+            function spawnParticle(position) {
+                const p = particles[currentParticle];
+                p.position.copy(position);
+                p.velocity.x = (Math.random() - 0.5) * 0.5;
+                p.velocity.y = (Math.random() - 0.5) * 0.5;
+                p.life = p.maxLife;
+                
+                const color = trailPalette[Math.floor(Math.random() * trailPalette.length)];
+                trailColors[currentParticle * 3] = color.r;
+                trailColors[currentParticle * 3 + 1] = color.g;
+                trailColors[currentParticle * 3 + 2] = color.b;
+                
+                currentParticle = (currentParticle + 1) % trailParticles;
+            }
+
+            const comet = new THREE.Vector3();
+
+            function animate() {
+                requestAnimationFrame(animate);
+
+                const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+                vector.unproject(camera);
+                const dir = vector.sub(camera.position).normalize();
+                const distance = -camera.position.z / dir.z;
+                const pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+                comet.lerp(pos, 0.1);
+
+                if (mouse.x !== 0 || mouse.y !== 0) {
+                    spawnParticle(comet);
+                }
+
+                const positions = trail.geometry.attributes.position.array;
+                const alphas = trail.geometry.attributes.alpha.array;
+
+                for (let i = 0; i < trailParticles; i++) {
+                    const p = particles[i];
+                    if (p.life > 0) {
+                        p.life--;
+                        p.position.add(p.velocity);
+                        alphas[i] = p.life / p.maxLife;
+                    } else {
+                        alphas[i] = 0;
+                    }
+                    positions[i * 3] = p.position.x;
+                    positions[i * 3 + 1] = p.position.y;
+                    positions[i * 3 + 2] = p.position.z;
+                }
+
+                trail.geometry.attributes.position.needsUpdate = true;
+                trail.geometry.attributes.alpha.needsUpdate = true;
+                trail.geometry.attributes.color.needsUpdate = true;
+
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                windowHalf.set(window.innerWidth / 2, window.innerHeight / 2);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            animate();
+        } catch (error) {
+            console.error("Erro ao inicializar o fundo animado:", error);
+            const canvas = document.getElementById('bg-canvas');
+            if(canvas) canvas.style.display = 'none';
+        }
+    </script>
+     <script>
+        // --- Lógica de Navegação SPA (Single Page Application) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const pageContainer = {
+                'landing-page': document.getElementById('landing-page'),
+                'blog-page': document.getElementById('blog-page'),
+                'post-page': document.getElementById('post-page')
+            };
+
+            const allNavLinks = document.querySelectorAll('.nav-link');
+
+            // Conteúdo dos posts (simulação)
+            const posts = {
+                'post-1': {
+                    title: '5 Erros de SEO que Você Pode Estar Cometendo',
+                    image: 'images/full/seo.jpg',
+                    meta: 'Por Equipe Zenith Labs • 22 de Julho, 2025',
+                    content: `
+                        <p>Otimização para mecanismos de busca (SEO) é um campo complexo e em constante mudança. Muitos desenvolvedores e donos de negócios, mesmo com as melhores intenções, cometem erros que podem prejudicar o ranking de seus sites. Aqui estão cinco dos erros mais comuns que vemos e como você pode corrigi-los.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">1. Ignorar a Pesquisa de Palavras-chave</h3>
+                        <p>Muitos criam conteúdo sobre o que eles <strong>acham</strong> que os usuários querem, em vez de pesquisar o que eles <strong>realmente</strong> buscam. Ferramentas como o Google Keyword Planner ou Ahrefs são essenciais para entender o volume de busca e a intenção por trás das palavras-chave.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">2. Negligenciar a Experiência Mobile</h3>
+                        <p>Com o Google adotando a indexação "mobile-first", ter um site que não funciona bem em dispositivos móveis é um erro fatal. Seu site deve ser responsivo, rápido e fácil de navegar em uma tela pequena. Teste seu site regularmente usando a ferramenta de Teste de Compatibilidade com Dispositivos Móveis do Google.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">3. Conteúdo de Baixa Qualidade</h3>
+                        <p>Conteúdo superficial, copiado ou que não responde à pergunta do usuário é penalizado pelos buscadores. Invista em artigos bem pesquisados, detalhados e que ofereçam valor real ao leitor. Pense em qualidade, não apenas em quantidade.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">4. Falta de Links Internos</h3>
+                        <p>Uma boa estrutura de links internos ajuda o Google a entender a hierarquia do seu site e a distribuir a autoridade entre suas páginas. Sempre que publicar um novo artigo, lembre-se de linkar para outras páginas relevantes dentro do seu próprio site.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">5. Velocidade de Carregamento Lenta</h3>
+                        <p>Um site lento frustra os usuários e prejudica seu ranking. Otimize o tamanho das imagens, utilize cache de navegador e considere uma CDN (Content Delivery Network) para garantir que suas páginas carreguem o mais rápido possível.</p>
+                    `
+                },
+                'post-2': {
+                    title: 'A Importância da Experiência do Usuário para Negócios',
+                    image: 'images/full/design.jpg',
+                    meta: 'Por Equipe Zenith Labs • 15 de Julho, 2025',
+                    content: `
+                        <p>A Experiência do Usuário (UX) vai muito além de um design bonito. Trata-se de como um usuário se sente ao interagir com seu produto ou serviço. Uma boa UX pode ser o diferencial entre um cliente satisfeito e um cliente que abandona seu site para nunca mais voltar.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">O que é UX Design?</h3>
+                        <p>UX Design é o processo de criar produtos que fornecem experiências significativas e relevantes aos usuários. Isso envolve o design de todo o processo de aquisição e integração do produto, incluindo aspectos de branding, design, usabilidade e função.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">Por que é crucial para os negócios?</h3>
+                        <p><strong>Aumento da Conversão:</strong> Um site fácil de usar, que guia o usuário de forma intuitiva até a ação desejada (seja uma compra ou um cadastro), tem taxas de conversão significativamente maiores.</p>
+                        <p><strong>Melhora a Retenção:</strong> Uma experiência positiva faz com que os clientes voltem. A lealdade à marca é construída sobre interações consistentes e agradáveis.</p>
+                        <p><strong>Reduz Custos de Suporte:</strong> Se um produto é intuitivo, os usuários precisam de menos ajuda para usá-lo, o que diminui a carga sobre as equipes de suporte ao cliente.</p>
+                    `
+                },
+                'post-3': {
+                    title: 'React vs. Vue: Qual escolher para seu próximo projeto?',
+                    image: 'images/full/desenvolvimento.jpg',
+                    meta: 'Por Equipe Zenith Labs • 8 de Julho, 2025',
+                    content: `
+                        <p>A escolha de um framework JavaScript é uma das decisões mais importantes no início de um novo projeto. React e Vue são dois dos gigantes mais populares do mercado, cada um com suas próprias forças e ecossistemas. Analisamos a curva de aprendizado, performance, flexibilidade e comunidade de cada um para ajudá-lo a tomar a decisão mais informada.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">React</h3>
+                        <p>Mantido pelo Facebook, o React domina o mercado com seu vasto ecossistema e flexibilidade. Sua abordagem baseada em componentes e o uso do JSX o tornam poderoso para aplicações complexas e de grande escala. A grande comunidade significa uma abundância de bibliotecas, ferramentas e suporte.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">Vue</h3>
+                        <p>Vue é conhecido por sua curva de aprendizado suave e documentação exemplar. Ele é frequentemente considerado mais "amigável para iniciantes" do que o React. Sua estrutura progressiva permite que seja adotado gradualmente em projetos existentes, oferecendo um ótimo equilíbrio entre simplicidade e poder.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">Conclusão</h3>
+                        <p>Para equipes grandes que precisam de máxima flexibilidade e um ecossistema robusto, <strong>React</strong> pode ser a melhor escolha. Para projetos que precisam de um início rápido, uma curva de aprendizado menor e uma integração fácil, <strong>Vue</strong> se destaca. Ambos são excelentes e a escolha final muitas vezes se resume à preferência da equipe e aos requisitos específicos do projeto.</p>
+                    `
+                },
+                'post-4': {
+                    title: 'Cibersegurança para Pequenas Empresas: Um Guia Essencial',
+                    image: 'images/full/seguranca.jpg',
+                    meta: 'Por Equipe Zenith Labs • 1 de Julho, 2025',
+                    content: `
+                        <p>Muitos pequenos empresários acreditam que são alvos pequenos demais para ciberataques, mas a realidade é o oposto. Pequenas empresas são frequentemente vistas como alvos fáceis por terem, em geral, menos recursos de segurança. Neste guia, abordamos passos práticos e essenciais que você pode tomar hoje para proteger seu negócio.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">1. Senhas Fortes e Gerenciadores</h3>
+                        <p>Use senhas longas e complexas, combinando letras, números e símbolos. Mais importante, use um gerenciador de senhas para criar e armazenar senhas únicas para cada serviço. Isso evita que uma única violação comprometa todas as suas contas.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">2. Autenticação de Dois Fatores (2FA)</h3>
+                        <p>Ative o 2FA em todos os serviços que o oferecem. Isso adiciona uma camada extra de segurança, exigindo um segundo código (geralmente do seu celular) para fazer login, mesmo que alguém tenha roubado sua senha.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">3. Backups Regulares</h3>
+                        <p>Faça backups regulares de todos os seus dados importantes. Em caso de um ataque de ransomware, onde seus arquivos são "sequestrados", um backup recente é a sua melhor e, por vezes, única forma de recuperação sem pagar resgate.</p>
+                    `
+                },
+                'post-5': {
+                    title: 'O Futuro do Web Design: 5 Tendências para 2026',
+                    image: 'images/full/tendencias.jpg',
+                    meta: 'Por Equipe Zenith Labs • 24 de Junho, 2025',
+                    content: `
+                        <p>O mundo do web design está em constante evolução. O que é moderno hoje pode parecer datado amanhã. Estamos de olho no horizonte e identificamos 5 tendências que devem dominar o cenário em 2026. Prepare-se para o futuro e veja como essas tendências podem ser aplicadas ao seu site.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">1. Design 3D Interativo</h3>
+                        <p>Graças a tecnologias como WebGL e bibliotecas como a Three.js (que usamos neste site!), os elementos 3D estão mais acessíveis do que nunca. Espere ver mais visualizações de produtos em 360°, experiências imersivas e interfaces que quebram a barreira do plano 2D, criando um engajamento muito maior.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">2. Personalização baseada em IA</h3>
+                        <p>A Inteligência Artificial permitirá que os sites adaptem o conteúdo, o layout e até as ofertas em tempo real para cada usuário individual. Baseado no seu histórico de navegação e comportamento, a experiência se tornará única, aumentando drasticamente a relevância e a conversão.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">3. Foco Radical em Acessibilidade (A11Y)</h3>
+                        <p>A acessibilidade deixará de ser um item opcional para se tornar um pilar central do design. Construir sites que são utilizáveis por todas as pessoas, incluindo aquelas com deficiências, não é apenas a coisa certa a se fazer, mas também melhora o SEO e amplia o alcance do seu público.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">4. "Brutalismo" Nostálgico</h3>
+                        <p>Como uma reação aos designs corporativos excessivamente limpos e padronizados, veremos um ressurgimento do brutalismo digital. Pense em layouts crus, tipografia forte e uma estética que remete aos primórdios da web, mas com uma execução moderna e intencional que transmite autenticidade.</p>
+                        <h3 class="text-2xl font-bold mt-6 mb-2">5. Scrollytelling</h3>
+                        <p>Mais do que apenas rolar uma página, o "scrollytelling" usa a ação de rolagem para guiar o usuário através de uma narrativa visual. Animações são acionadas, gráficos se constroem e a história se desenrola à medida que você avança, transformando uma simples página em uma jornada interativa e memorável.</p>
+                    `
+                }
+            };
+
+            function showPage(pageId) {
+                // Esconde todas as páginas
+                Object.values(pageContainer).forEach(page => page.style.display = 'none');
+                // Mostra a página desejada
+                if (pageContainer[pageId]) {
+                    pageContainer[pageId].style.display = 'block';
+                    window.scrollTo(0, 0);
+                } else {
+                    // Se a página não existir (ex: link de seção), mostra a landing page
+                    pageContainer['landing-page'].style.display = 'block';
+                }
+            }
+
+            // Lida com cliques nos links de navegação
+            allNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const pageId = link.dataset.page;
+                    if (pageId) {
+                        e.preventDefault();
+                        showPage(pageId);
+                    } else {
+                        // Se for um link de âncora normal, garante que a landing page está visível
+                        showPage('landing-page');
+                        // Deixa o scroll suave da âncora funcionar
+                        setTimeout(() => {
+                            const targetElement = document.querySelector(link.getAttribute('href'));
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }, 0);
+                    }
+                });
+            });
+
+            // Lida com cliques nos cards de post
+            document.querySelectorAll('.post-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const postId = card.dataset.post;
+                    const postData = posts[postId];
+                    
+                    if (postData) {
+                        document.getElementById('post-image').src = postData.image;
+                        document.getElementById('post-title').textContent = postData.title;
+                        document.getElementById('post-meta').textContent = postData.meta;
+                        document.getElementById('post-content').innerHTML = postData.content;
+                        showPage('post-page');
+                    }
+                });
+            });
+
+            // Lida com clique no botão "Voltar para o Blog"
+            document.querySelector('.back-to-blog-btn').addEventListener('click', () => {
+                showPage('blog-page');
+            });
+        });
+    </script>
+
+</body>
+</html>
