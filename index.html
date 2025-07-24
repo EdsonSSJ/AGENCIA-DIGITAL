@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Metatags de SEO Essenciais (Serão atualizadas dinamicamente) -->
     <title>Zenith Labs - Soluções digitais que geram resultados reais.</title>
-    <meta id="meta-description" name="description" content="Zenith Labs é uma agência digital especializada em desenvolvimento de sites, SEO e UI/UX design. Transformamos ideias em realidade digital.">
-    <meta name="keywords" content="zenith labs, agência digital, desenvolvimento web, seo, marketing digital, criação de sites">
+    <meta id="meta-description" name="description"
+        content="Zenith Labs é uma agência digital especializada em desenvolvimento de sites, SEO e UI/UX design. Transformamos ideias em realidade digital.">
+    <meta name="keywords"
+        content="zenith labs, agência digital, desenvolvimento web, seo, marketing digital, criação de sites">
     <meta name="author" content="Zenith Labs">
     <link rel="canonical" href="https://www.zenithlabs.com">
 
@@ -15,18 +18,21 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.zenithlabs.com">
     <meta property="og:title" content="Zenith Labs - Soluções Digitais Inovadoras">
-    <meta property="og:description" content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
+    <meta property="og:description"
+        content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
     <meta property="og:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=🦉+Zenith+Labs">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.zenithlabs.com">
     <meta property="twitter:title" content="Zenith Labs - Soluções Digitais Inovadoras">
-    <meta property="twitter:description" content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
+    <meta property="twitter:description"
+        content="Soluções digitais que geram resultados reais. Combinamos criatividade, tecnologia e estratégia para o sucesso do seu projeto.">
     <meta property="twitter:image" content="https://placehold.co/1200x630/0a0a0a/ffffff?text=🦉+Zenith+Labs">
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦉</text></svg>">
 
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -36,7 +42,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
+
     <!-- Ícones (Lucide) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -50,29 +56,35 @@
             height: 100%;
             z-index: -1;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0a0a0a;
             color: #f1f5f9;
         }
+
         #inicio {
             background-color: transparent;
         }
+
         .text-gradient {
             background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         .nav-link::after {
             content: '';
             display: block;
@@ -81,34 +93,49 @@
             background: #3b82f6;
             transition: width .3s;
         }
+
         .nav-link:hover::after {
             width: 100%;
         }
+
         .animated-gradient-bg {
             background: linear-gradient(-45deg, #0a0a0a, #111827, #1e1b4b, #172554);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
+
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
+
         .static-radial-bg {
             background-color: #0a0a0a;
             background-image: radial-gradient(circle at 50% 50%, rgba(23, 37, 84, 0.3) 0%, rgba(10, 10, 10, 0) 60%);
         }
+
         /* Estilos do Mascote */
         #mascote-nexus {
             position: fixed;
             width: 80px;
             height: 80px;
             z-index: 9999;
-            pointer-events: all; /* Habilita clique */
+            pointer-events: all;
+            /* Habilita clique */
             cursor: pointer;
             transition: opacity 0.5s ease-in-out, transform 0.5s ease;
             opacity: 0;
         }
+
         /* Estilos do Balão de Fala */
         #mascote-speech-bubble {
             position: absolute;
@@ -126,6 +153,7 @@
             transition: opacity 0.3s ease-in-out;
             pointer-events: none;
         }
+
         #mascote-speech-bubble::after {
             content: '';
             position: absolute;
@@ -136,6 +164,7 @@
             border-style: solid;
             border-color: #f1f5f9 transparent transparent transparent;
         }
+
         /* Estilos do Assistente Virtual (Chat) */
         #assistente-chat {
             position: fixed;
@@ -153,42 +182,64 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
             pointer-events: none;
         }
+
         #assistente-chat.visible {
             transform: translateY(0) scale(1);
             opacity: 1;
             pointer-events: all;
         }
+
         /* Estilos para o conteúdo do Artigo */
         .prose-custom {
             color: #cbd5e1;
         }
-        .prose-custom h1, .prose-custom h2, .prose-custom h3 {
+
+        .prose-custom h1,
+        .prose-custom h2,
+        .prose-custom h3 {
             color: #f1f5f9;
         }
+
         .prose-custom p {
             line-height: 1.7;
             text-align: justify;
         }
+
         .prose-custom a {
             color: #60a5fa;
         }
+
         .prose-custom strong {
             color: #f8fafc;
         }
+
         /* Animação para cards */
-        .animated-card, .blog-post {
+        .animated-card,
+        .blog-post {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .animated-card:hover, .blog-post:hover {
+
+        .animated-card:hover,
+        .blog-post:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0J7VBY6VZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-C0J7VBY6VZ');
+    </script>
 </head>
+
 <body class="text-slate-100">
 
     <canvas id="bg-canvas"></canvas>
-    
+
     <!-- Mascote Nexus com Balão de Fala -->
     <div id="mascote-nexus">
         <div id="mascote-speech-bubble">
@@ -197,26 +248,29 @@
         <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <linearGradient id="grad-olhos" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#8b5cf6"/>
-                    <stop offset="100%" stop-color="#3b82f6"/>
+                    <stop offset="0%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#3b82f6" />
                 </linearGradient>
                 <filter id="glow">
-                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="3.5" result="coloredBlur" />
                     <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
                     </feMerge>
                 </filter>
             </defs>
             <g id="coruja-corpo" style="transform-origin: center center;">
-                <path d="M60 110C87.6142 110 110 87.6142 110 60C110 32.3858 87.6142 10 60 10C32.3858 10 10 32.3858 10 60C10 87.6142 32.3858 110 60 110Z" fill="#1e293b" fill-opacity="0.7"/>
-                <circle cx="45" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)"/>
-                <circle cx="75" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)"/>
-                <circle cx="45" cy="50" r="4" fill="white"/>
-                <circle cx="75" cy="50" r="4" fill="white"/>
-                <path d="M52 70L60 80L68 70" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M30 25C20 35 18 50 25 65" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round"/>
-                <path d="M90 25C100 35 102 50 95 65" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                <path
+                    d="M60 110C87.6142 110 110 87.6142 110 60C110 32.3858 87.6142 10 60 10C32.3858 10 10 32.3858 10 60C10 87.6142 32.3858 110 60 110Z"
+                    fill="#1e293b" fill-opacity="0.7" />
+                <circle cx="45" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)" />
+                <circle cx="75" cy="50" r="12" fill="url(#grad-olhos)" filter="url(#glow)" />
+                <circle cx="45" cy="50" r="4" fill="white" />
+                <circle cx="75" cy="50" r="4" fill="white" />
+                <path d="M52 70L60 80L68 70" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M30 25C20 35 18 50 25 65" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" />
+                <path d="M90 25C100 35 102 50 95 65" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
             </g>
         </svg>
     </div>
@@ -230,9 +284,14 @@
             </div>
             <p class="text-sm text-slate-300 mb-4">Olá! Estou aqui para ajudar. O que você gostaria de ver?</p>
             <div class="flex flex-col gap-2">
-                <button class="chat-btn w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors" data-target="#servicos">Nossos Serviços</button>
+                <button
+                    class="chat-btn w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors"
+                    data-target="#servicos">Nossos Serviços</button>
                 <!-- MUDANÇA: Botão agora é um link para o WhatsApp -->
-                <a href="https://wa.me/5571992976844?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." target="_blank" class="block w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors">Pedir um Orçamento</a>
+                <a href="https://wa.me/5571992976844?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+                    target="_blank"
+                    class="block w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors">Pedir
+                    um Orçamento</a>
             </div>
         </div>
     </div>
@@ -246,19 +305,31 @@
                 <span class="text-3xl font-bold text-gradient">Zenith Labs</span>
             </a>
             <nav class="hidden lg:flex space-x-6">
-                <a href="#inicio" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Início</a>
-                <a href="#servicos" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Serviços</a>
-                <a href="#processo" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Processo</a>
-                <a href="#diagnostico-seo" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Diagnóstico SEO</a>
-                <a href="#calculadora-roi" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Calculadora ROI</a>
-                <a href="#blog" class="nav-link text-slate-200 hover:text-white transition-colors duration-300" data-page="blog-page">Blog</a>
-                <a href="#contato" class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Contato</a>
+                <a href="#inicio"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Início</a>
+                <a href="#servicos"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Serviços</a>
+                <a href="#processo"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Processo</a>
+                <a href="#diagnostico-seo"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Diagnóstico SEO</a>
+                <a href="#calculadora-roi"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Calculadora ROI</a>
+                <a href="#blog" class="nav-link text-slate-200 hover:text-white transition-colors duration-300"
+                    data-page="blog-page">Blog</a>
+                <a href="#contato"
+                    class="nav-link text-slate-200 hover:text-white transition-colors duration-300">Contato</a>
             </nav>
-            <a href="#contato" class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
+            <a href="#contato"
+                class="hidden lg:inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300">
                 Peça um Orçamento
             </a>
             <button id="mobile-menu-button" class="lg:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
             </button>
         </div>
         <!-- Menu Mobile -->
@@ -271,7 +342,9 @@
                 <a href="#calculadora-roi" class="nav-link block text-slate-200 hover:text-white">Calculadora ROI</a>
                 <a href="#blog" class="nav-link block text-slate-200 hover:text-white" data-page="blog-page">Blog</a>
                 <a href="#contato" class="nav-link block text-slate-200 hover:text-white">Contato</a>
-                <a href="#contato" class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-center">Peça um Orçamento</a>
+                <a href="#contato"
+                    class="block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg text-center">Peça
+                    um Orçamento</a>
             </nav>
         </div>
     </header>
@@ -286,9 +359,10 @@
                         <span class="text-gradient">Realidade Digital</span>
                     </h1>
                     <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-                       Soluções digitais que geram resultados reais.
+                        Soluções digitais que geram resultados reais.
                     </p>
-                    <a href="#servicos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
+                    <a href="#servicos"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
                         Conheça nossos serviços
                     </a>
                 </div>
@@ -302,10 +376,30 @@
                         <p class="text-slate-300 mt-2">Soluções completas para sua presença online.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Desenvolvimento Web</h3><p class="text-slate-300 text-justify">Criação de sites e landing pages responsivos, otimizados para SEO e focados na conversão.</p></article>
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Sistemas Web</h3><p class="text-slate-300 text-justify">Desenvolvimento de aplicações e sistemas sob medida para automatizar processos e escalar seu negócio.</p></article>
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">Consultoria SEO</h3><p class="text-slate-300 text-justify">Análise e otimização do seu site para alcançar as primeiras posições nos mecanismos de busca.</p></article>
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section"><h3 class="text-xl font-bold text-white mb-2">UI/UX Design</h3><p class="text-slate-300 text-justify">Projetamos interfaces intuitivas e atraentes que proporcionam a melhor experiência para o usuário.</p></article>
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-xl font-bold text-white mb-2">Desenvolvimento Web</h3>
+                            <p class="text-slate-300 text-justify">Criação de sites e landing pages responsivos,
+                                otimizados para SEO e focados na conversão.</p>
+                        </article>
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-xl font-bold text-white mb-2">Sistemas Web</h3>
+                            <p class="text-slate-300 text-justify">Desenvolvimento de aplicações e sistemas sob medida
+                                para automatizar processos e escalar seu negócio.</p>
+                        </article>
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-xl font-bold text-white mb-2">Consultoria SEO</h3>
+                            <p class="text-slate-300 text-justify">Análise e otimização do seu site para alcançar as
+                                primeiras posições nos mecanismos de busca.</p>
+                        </article>
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                            <h3 class="text-xl font-bold text-white mb-2">UI/UX Design</h3>
+                            <p class="text-slate-300 text-justify">Projetamos interfaces intuitivas e atraentes que
+                                proporcionam a melhor experiência para o usuário.</p>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -315,61 +409,75 @@
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16 fade-in-section">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Nosso Processo de Trabalho</h2>
-                        <p class="text-slate-300 mt-2">Da ideia ao lançamento, seguimos um caminho claro para garantir o sucesso do seu projeto.</p>
+                        <p class="text-slate-300 mt-2">Da ideia ao lançamento, seguimos um caminho claro para garantir o
+                            sucesso do seu projeto.</p>
                     </div>
                     <div class="relative fade-in-section">
                         <!-- Linha do tempo -->
-                        <div class="hidden md:block border-l-2 border-blue-500 absolute h-full top-0" style="left: 50%; transform: translateX(-1px);"></div>
+                        <div class="hidden md:block border-l-2 border-blue-500 absolute h-full top-0"
+                            style="left: 50%; transform: translateX(-1px);"></div>
                         <!-- Itens do processo -->
                         <div class="space-y-12 md:space-y-0">
                             <!-- Item 1 -->
                             <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
                                 <div class="md:text-right md:pr-8">
                                     <h3 class="text-2xl font-bold text-gradient">01. Briefing e Imersão</h3>
-                                    <p class="text-slate-300 mt-2">O primeiro passo é entender profundamente seus objetivos, seu público e seu mercado. Realizamos uma imersão completa no seu negócio.</p>
+                                    <p class="text-slate-300 mt-2">O primeiro passo é entender profundamente seus
+                                        objetivos, seu público e seu mercado. Realizamos uma imersão completa no seu
+                                        negócio.</p>
                                 </div>
                                 <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
-                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="coffee" class="text-blue-400"></i></div>
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i
+                                            data-lucide="coffee" class="text-blue-400"></i></div>
                                 </div>
                             </div>
                             <!-- Item 2 -->
                             <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
                                 <div class="flex justify-center md:justify-end mt-4 md:mt-0 md:pr-8">
-                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="compass" class="text-blue-400"></i></div>
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i
+                                            data-lucide="compass" class="text-blue-400"></i></div>
                                 </div>
                                 <div class="md:text-left md:pl-8">
                                     <h3 class="text-2xl font-bold text-gradient">02. Estratégia e Planejamento</h3>
-                                    <p class="text-slate-300 mt-2">Com base na imersão, traçamos um plano estratégico detalhado, definindo tecnologias, arquitetura da informação e cronograma.</p>
+                                    <p class="text-slate-300 mt-2">Com base na imersão, traçamos um plano estratégico
+                                        detalhado, definindo tecnologias, arquitetura da informação e cronograma.</p>
                                 </div>
                             </div>
                             <!-- Item 3 -->
                             <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
                                 <div class="md:text-right md:pr-8">
                                     <h3 class="text-2xl font-bold text-gradient">03. Design e Prototipação</h3>
-                                    <p class="text-slate-300 mt-2">Criamos o design da interface (UI) e a experiência do usuário (UX), construindo protótipos interativos para validação antes do desenvolvimento.</p>
+                                    <p class="text-slate-300 mt-2">Criamos o design da interface (UI) e a experiência do
+                                        usuário (UX), construindo protótipos interativos para validação antes do
+                                        desenvolvimento.</p>
                                 </div>
                                 <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
-                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="drafting-compass" class="text-blue-400"></i></div>
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i
+                                            data-lucide="drafting-compass" class="text-blue-400"></i></div>
                                 </div>
                             </div>
                             <!-- Item 4 -->
                             <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
-                               <div class="flex justify-center md:justify-end mt-4 md:mt-0 md:pr-8">
-                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="code-2" class="text-blue-400"></i></div>
+                                <div class="flex justify-center md:justify-end mt-4 md:mt-0 md:pr-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i
+                                            data-lucide="code-2" class="text-blue-400"></i></div>
                                 </div>
                                 <div class="md:text-left md:pl-8">
                                     <h3 class="text-2xl font-bold text-gradient">04. Desenvolvimento</h3>
-                                    <p class="text-slate-300 mt-2">Nossos desenvolvedores transformam o design em um produto funcional, utilizando as melhores práticas e tecnologias do mercado.</p>
+                                    <p class="text-slate-300 mt-2">Nossos desenvolvedores transformam o design em um
+                                        produto funcional, utilizando as melhores práticas e tecnologias do mercado.</p>
                                 </div>
                             </div>
-                             <!-- Item 5 -->
+                            <!-- Item 5 -->
                             <div class="md:grid md:grid-cols-2 md:gap-8 items-center">
                                 <div class="md:text-right md:pr-8">
                                     <h3 class="text-2xl font-bold text-gradient">05. Lançamento e Suporte</h3>
-                                    <p class="text-slate-300 mt-2">Após testes rigorosos, lançamos o projeto. Oferecemos suporte contínuo para garantir performance e evolução constante.</p>
+                                    <p class="text-slate-300 mt-2">Após testes rigorosos, lançamos o projeto. Oferecemos
+                                        suporte contínuo para garantir performance e evolução constante.</p>
                                 </div>
-                                 <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
-                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i data-lucide="rocket" class="text-blue-400"></i></div>
+                                <div class="flex justify-center md:justify-start mt-4 md:mt-0 md:pl-8">
+                                    <div class="bg-gray-800 p-4 rounded-full border-2 border-blue-500 z-10"><i
+                                            data-lucide="rocket" class="text-blue-400"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -382,12 +490,16 @@
                 <div class="container mx-auto px-6">
                     <div class="max-w-3xl mx-auto text-center mb-12 fade-in-section">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Diagnóstico Rápido de SEO</h2>
-                        <p class="text-slate-300 mt-2">Descubra como melhorar o posicionamento do seu site. Insira a URL e receba uma análise gratuita e instantânea.</p>
+                        <p class="text-slate-300 mt-2">Descubra como melhorar o posicionamento do seu site. Insira a URL
+                            e receba uma análise gratuita e instantânea.</p>
                     </div>
                     <div class="max-w-2xl mx-auto fade-in-section">
                         <form id="seo-form" class="flex flex-col sm:flex-row gap-4">
-                            <input type="url" id="seo-url" placeholder="https://seusite.com.br" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow">
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Analisar Agora</button>
+                            <input type="url" id="seo-url" placeholder="https://seusite.com.br" required
+                                class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow">
+                            <button type="submit"
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300">Analisar
+                                Agora</button>
                         </form>
                         <div id="seo-results" class="mt-8"></div>
                     </div>
@@ -399,36 +511,55 @@
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-12 fade-in-section">
                         <h2 class="text-3xl md:text-4xl font-bold text-white">Calculadora de ROI</h2>
-                        <p class="text-slate-300 mt-2">Estime o potencial de retorno sobre o investimento em marketing digital para o seu negócio.</p>
+                        <p class="text-slate-300 mt-2">Estime o potencial de retorno sobre o investimento em marketing
+                            digital para o seu negócio.</p>
                     </div>
-                    <div class="max-w-4xl mx-auto fade-in-section grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div
+                        class="max-w-4xl mx-auto fade-in-section grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
                         <!-- Inputs -->
                         <div id="roi-calculator" class="space-y-6">
                             <div>
-                                <label for="investment" class="block text-sm font-medium text-slate-200 mb-2">Investimento Mensal (R$)</label>
-                                <input type="number" id="investment" value="1000" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <label for="investment"
+                                    class="block text-sm font-medium text-slate-200 mb-2">Investimento Mensal
+                                    (R$)</label>
+                                <input type="number" id="investment" value="1000"
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                             <div>
-                                <label for="cpc" class="block text-sm font-medium text-slate-200 mb-2">Custo por Clique (CPC) Médio (R$)</label>
-                                <input type="number" id="cpc" value="1.50" step="0.01" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <label for="cpc" class="block text-sm font-medium text-slate-200 mb-2">Custo por Clique
+                                    (CPC) Médio (R$)</label>
+                                <input type="number" id="cpc" value="1.50" step="0.01"
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                             <div>
-                                <label for="conversion-rate" class="block text-sm font-medium text-slate-200 mb-2">Taxa de Conversão em Leads (%)</label>
-                                <input type="number" id="conversion-rate" value="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <label for="conversion-rate" class="block text-sm font-medium text-slate-200 mb-2">Taxa
+                                    de Conversão em Leads (%)</label>
+                                <input type="number" id="conversion-rate" value="5"
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
-                             <div>
-                                <label for="ticket" class="block text-sm font-medium text-slate-200 mb-2">Ticket Médio por Cliente (R$)</label>
-                                <input type="number" id="ticket" value="500" class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <div>
+                                <label for="ticket" class="block text-sm font-medium text-slate-200 mb-2">Ticket Médio
+                                    por Cliente (R$)</label>
+                                <input type="number" id="ticket" value="500"
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                         </div>
                         <!-- Resultados -->
                         <div class="bg-gray-800/50 p-8 rounded-xl border border-gray-700">
                             <h3 class="text-xl font-bold text-white mb-6 text-center">Resultados Estimados</h3>
                             <div class="space-y-4">
-                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos Visitantes:</span><span id="roi-visitors" class="text-2xl font-bold text-white">0</span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos Leads (Contatos):</span><span id="roi-leads" class="text-2xl font-bold text-white">0</span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-300">Custo por Lead:</span><span id="roi-cpl" class="text-2xl font-bold text-white">R$ 0,00</span></div>
-                                <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-700"><span class="text-slate-200 font-semibold">Receita Estimada:</span><span id="roi-revenue" class="text-2xl font-bold text-gradient">R$ 0,00</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos
+                                        Visitantes:</span><span id="roi-visitors"
+                                        class="text-2xl font-bold text-white">0</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Novos Leads
+                                        (Contatos):</span><span id="roi-leads"
+                                        class="text-2xl font-bold text-white">0</span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-300">Custo por
+                                        Lead:</span><span id="roi-cpl" class="text-2xl font-bold text-white">R$
+                                        0,00</span></div>
+                                <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-700"><span
+                                        class="text-slate-200 font-semibold">Receita Estimada:</span><span
+                                        id="roi-revenue" class="text-2xl font-bold text-gradient">R$ 0,00</span></div>
                             </div>
                         </div>
                     </div>
@@ -445,34 +576,47 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Post 1 -->
                         <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
-                            <img src="images/cards/seo.jpg" alt="Gráfico com palavras-chave e lupas representando uma análise de SEO" class="w-full h-48 object-cover">
+                            <img src="images/cards/seo.jpg"
+                                alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">SEO</p>
-                                <h3 class="text-xl font-bold text-white mb-2">5 Erros de SEO que Você Pode Estar Cometendo</h3>
-                                <p class="text-slate-300 text-justify">Descubra os erros mais comuns que impedem seu site de ranquear bem no Google e como corrigi-los hoje mesmo.</p>
+                                <h3 class="text-xl font-bold text-white mb-2">5 Erros de SEO que Você Pode Estar
+                                    Cometendo</h3>
+                                <p class="text-slate-300 text-justify">Descubra os erros mais comuns que impedem seu
+                                    site de ranquear bem no Google e como corrigi-los hoje mesmo.</p>
                             </div>
                         </article>
                         <!-- Post 2 -->
                         <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
-                            <img src="images/cards/design.jpg" alt="Pessoa desenhando o wireframe de um aplicativo em um tablet" class="w-full h-48 object-cover">
+                            <img src="images/cards/design.jpg"
+                                alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">UI/UX Design</p>
-                                <h3 class="text-xl font-bold text-white mb-2">A Importância da Experiência do Usuário para Negócios</h3>
-                                <p class="text-slate-300 text-justify">Entenda como um bom design focado no usuário pode aumentar suas taxas de conversão e fidelizar clientes.</p>
+                                <h3 class="text-xl font-bold text-white mb-2">A Importância da Experiência do Usuário
+                                    para Negócios</h3>
+                                <p class="text-slate-300 text-justify">Entenda como um bom design focado no usuário pode
+                                    aumentar suas taxas de conversão e fidelizar clientes.</p>
                             </div>
                         </article>
                         <!-- Post 3 -->
                         <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
-                            <img src="images/cards/desenvolvimento.jpg" alt="Tela de computador exibindo linhas de código de programação" class="w-full h-48 object-cover">
+                            <img src="images/cards/desenvolvimento.jpg"
+                                alt="Tela de computador exibindo linhas de código de programação"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">Desenvolvimento</p>
-                                <h3 class="text-xl font-bold text-white mb-2">React vs. Vue: Qual escolher para seu próximo projeto?</h3>
-                                <p class="text-slate-300 text-justify">Uma análise comparativa entre dois dos frameworks JavaScript mais populares da atualidade.</p>
+                                <h3 class="text-xl font-bold text-white mb-2">React vs. Vue: Qual escolher para seu
+                                    próximo projeto?</h3>
+                                <p class="text-slate-300 text-justify">Uma análise comparativa entre dois dos frameworks
+                                    JavaScript mais populares da atualidade.</p>
                             </div>
                         </article>
                     </div>
                     <div class="text-center mt-12 fade-in-section">
-                        <a href="#blog" data-page="blog-page" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
+                        <a href="#blog" data-page="blog-page"
+                            class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">
                             Ver todos os posts
                         </a>
                     </div>
@@ -488,19 +632,28 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <!-- Missão -->
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
                             <h3 class="text-2xl font-bold text-gradient mb-4">Missão</h3>
-                            <p class="text-slate-300 text-justify">Transformar ideias em realidade digital, desenvolvendo soluções inovadoras e personalizadas que impulsionam o sucesso e o crescimento dos nossos clientes no ambiente online.</p>
+                            <p class="text-slate-300 text-justify">Transformar ideias em realidade digital,
+                                desenvolvendo soluções inovadoras e personalizadas que impulsionam o sucesso e o
+                                crescimento dos nossos clientes no ambiente online.</p>
                         </article>
                         <!-- Visão -->
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
                             <h3 class="text-2xl font-bold text-gradient mb-4">Visão</h3>
-                            <p class="text-slate-300 text-justify">Ser uma agência de referência no mercado digital, reconhecida pela excelência criativa, pela aplicação de tecnologias de ponta e por construir parcerias de longo prazo baseadas em resultados.</p>
+                            <p class="text-slate-300 text-justify">Ser uma agência de referência no mercado digital,
+                                reconhecida pela excelência criativa, pela aplicação de tecnologias de ponta e por
+                                construir parcerias de longo prazo baseadas em resultados.</p>
                         </article>
                         <!-- Valores -->
-                        <article class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
+                        <article
+                            class="animated-card bg-gray-800/50 p-8 rounded-xl border border-gray-700 fade-in-section">
                             <h3 class="text-2xl font-bold text-gradient mb-4">Valores</h3>
-                            <p class="text-slate-300 text-justify">Compromisso com a qualidade, inovação constante, transparência em todas as etapas, colaboração com nossos clientes e paixão por resolver desafios complexos.</p>
+                            <p class="text-slate-300 text-justify">Compromisso com a qualidade, inovação constante,
+                                transparência em todas as etapas, colaboração com nossos clientes e paixão por resolver
+                                desafios complexos.</p>
                         </article>
                     </div>
                 </div>
@@ -508,7 +661,32 @@
 
             <!-- Seção de Contato -->
             <section id="contato" class="py-20 static-radial-bg">
-                <div class="container mx-auto px-6"><div class="text-center mb-12 fade-in-section"><h2 class="text-3xl md:text-4xl font-bold text-white">Vamos Conversar?</h2><p class="text-slate-300 mt-2">Envie sua ideia ou projeto e vamos construir algo incrível juntos.</p></div><div class="max-w-2xl mx-auto fade-in-section"><form action="https://formspree.io/f/movlewaa" method="POST" class="space-y-6"><div><label for="name" class="sr-only">Nome</label><input type="text" name="name" id="name" placeholder="Seu nome" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></div><div><label for="email" class="sr-only">Email</label><input type="email" name="email" id="email" placeholder="Seu e-mail" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></div><div><label for="message" class="sr-only">Mensagem</label><textarea name="message" id="message" rows="5" placeholder="Sua mensagem" required class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div><div class="text-center"><button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300">Enviar Mensagem</button></div></form></div></div>
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12 fade-in-section">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Vamos Conversar?</h2>
+                        <p class="text-slate-300 mt-2">Envie sua ideia ou projeto e vamos construir algo incrível
+                            juntos.</p>
+                    </div>
+                    <div class="max-w-2xl mx-auto fade-in-section">
+                        <form action="https://formspree.io/f/movlewaa" method="POST" class="space-y-6">
+                            <div><label for="name" class="sr-only">Nome</label><input type="text" name="name" id="name"
+                                    placeholder="Seu nome" required
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div><label for="email" class="sr-only">Email</label><input type="email" name="email"
+                                    id="email" placeholder="Seu e-mail" required
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div><label for="message" class="sr-only">Mensagem</label><textarea name="message"
+                                    id="message" rows="5" placeholder="Sua mensagem" required
+                                    class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <div class="text-center"><button type="submit"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300">Enviar
+                                    Mensagem</button></div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </div>
 
@@ -518,47 +696,73 @@
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16">
                         <h1 class="text-4xl md:text-5xl font-black text-white">Nosso Blog</h1>
-                        <p class="text-lg text-slate-300 mt-2">Dicas, tendências e insights sobre o universo digital.</p>
+                        <p class="text-lg text-slate-300 mt-2">Dicas, tendências e insights sobre o universo digital.
+                        </p>
                     </div>
                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Post Card 1 -->
-                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-1">
-                            <img src="images/cards/seo.jpg" alt="Gráfico com palavras-chave e lupas representando uma análise de SEO" class="w-full h-48 object-cover">
+                        <article
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            data-post="post-1">
+                            <img src="images/cards/seo.jpg"
+                                alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">SEO</p>
-                                <h2 class="text-xl font-bold text-white">5 Erros de SEO que Você Pode Estar Cometendo</h2>
+                                <h2 class="text-xl font-bold text-white">5 Erros de SEO que Você Pode Estar Cometendo
+                                </h2>
                             </div>
                         </article>
                         <!-- Post Card 2 -->
-                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-2">
-                            <img src="images/cards/design.jpg" alt="Pessoa desenhando o wireframe de um aplicativo em um tablet" class="w-full h-48 object-cover">
+                        <article
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            data-post="post-2">
+                            <img src="images/cards/design.jpg"
+                                alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">UI/UX Design</p>
-                                <h2 class="text-xl font-bold text-white">A Importância da Experiência do Usuário para Negócios</h2>
+                                <h2 class="text-xl font-bold text-white">A Importância da Experiência do Usuário para
+                                    Negócios</h2>
                             </div>
                         </article>
-                         <!-- Post Card 3 -->
-                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-3">
-                            <img src="images/cards/desenvolvimento.jpg" alt="Tela de computador exibindo linhas de código de programação" class="w-full h-48 object-cover">
+                        <!-- Post Card 3 -->
+                        <article
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            data-post="post-3">
+                            <img src="images/cards/desenvolvimento.jpg"
+                                alt="Tela de computador exibindo linhas de código de programação"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">Desenvolvimento</p>
-                                <h2 class="text-xl font-bold text-white">React vs. Vue: Qual escolher para seu próximo projeto?</h2>
+                                <h2 class="text-xl font-bold text-white">React vs. Vue: Qual escolher para seu próximo
+                                    projeto?</h2>
                             </div>
                         </article>
                         <!-- Post Card 4 -->
-                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-4">
-                            <img src="images/cards/seguranca.jpg" alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança" class="w-full h-48 object-cover">
+                        <article
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            data-post="post-4">
+                            <img src="images/cards/seguranca.jpg"
+                                alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">Segurança</p>
-                                <h2 class="text-xl font-bold text-white">Cibersegurança para Pequenas Empresas: Um Guia Essencial</h2>
+                                <h2 class="text-xl font-bold text-white">Cibersegurança para Pequenas Empresas: Um Guia
+                                    Essencial</h2>
                             </div>
                         </article>
                         <!-- Post Card 5 -->
-                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105" data-post="post-5">
-                            <img src="images/cards/tendencias.jpg" alt="Homem utilizando óculos de realidade virtual em um ambiente futurista" class="w-full h-48 object-cover">
+                        <article
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            data-post="post-5">
+                            <img src="images/cards/tendencias.jpg"
+                                alt="Homem utilizando óculos de realidade virtual em um ambiente futurista"
+                                class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <p class="text-sm text-blue-400 font-semibold mb-2">Tendências</p>
-                                <h2 class="text-xl font-bold text-white">O Futuro do Web Design: 5 Tendências para 2026</h2>
+                                <h2 class="text-xl font-bold text-white">O Futuro do Web Design: 5 Tendências para 2026
+                                </h2>
                             </div>
                         </article>
                     </div>
@@ -570,10 +774,12 @@
         <div id="post-page" class="hidden">
             <section class="py-32 static-radial-bg">
                 <div class="container mx-auto px-6 max-w-3xl">
-                    <button class="back-to-blog-btn mb-8 flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
+                    <button
+                        class="back-to-blog-btn mb-8 flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
                         <i data-lucide="arrow-left"></i> Voltar para o Blog
                     </button>
-                    <img id="post-image" src="" alt="Imagem do Artigo" class="w-full h-64 md:h-96 object-cover rounded-xl mb-8">
+                    <img id="post-image" src="" alt="Imagem do Artigo"
+                        class="w-full h-64 md:h-96 object-cover rounded-xl mb-8">
                     <h1 id="post-title" class="text-3xl md:text-5xl font-black text-white leading-tight mb-4"></h1>
                     <div id="post-meta" class="text-slate-400 mb-8"></div>
                     <div id="post-content" class="prose-custom text-lg"></div>
@@ -594,7 +800,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Inicializa ícones Lucide
             lucide.createIcons();
 
@@ -625,8 +831,8 @@
             // --- Lógica do Diagnóstico de SEO ---
             const seoForm = document.getElementById('seo-form');
             const seoResultsContainer = document.getElementById('seo-results');
-            
-            seoForm.addEventListener('submit', function(e) {
+
+            seoForm.addEventListener('submit', function (e) {
                 e.preventDefault();
                 const url = document.getElementById('seo-url').value;
                 if (!url) return;
@@ -735,7 +941,7 @@
                 const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
                 const y = 20 + scrollPercent * 60;
                 const x = 50 + Math.sin(scrollPercent * Math.PI * 2) * 40;
-                
+
                 mascot.style.top = `${y}%`;
                 mascot.style.left = `${x}%`;
             }, { passive: true });
@@ -786,7 +992,7 @@
                 context.fillRect(0, 0, canvas.width, canvas.height);
                 return new THREE.CanvasTexture(canvas);
             }
-            
+
             const particleTexture = createGlowTexture();
 
             const starGeometry = new THREE.BufferGeometry();
@@ -815,7 +1021,7 @@
             const trailPositions = new Float32Array(trailParticles * 3);
             const trailColors = new Float32Array(trailParticles * 3);
             const trailAlphas = new Float32Array(trailParticles);
-            
+
             const particles = [];
             const trailPalette = [new THREE.Color(0x3b82f6), new THREE.Color(0x8b5cf6)];
 
@@ -827,7 +1033,7 @@
             trailGeometry.setAttribute('position', new THREE.BufferAttribute(trailPositions, 3));
             trailGeometry.setAttribute('alpha', new THREE.BufferAttribute(trailAlphas, 1));
             trailGeometry.setAttribute('color', new THREE.BufferAttribute(trailColors, 3));
-            
+
             const trailMaterial = new THREE.PointsMaterial({ size: 4, map: particleTexture, blending: THREE.AdditiveBlending, transparent: true, depthWrite: false, vertexColors: true });
             trailMaterial.onBeforeCompile = shader => {
                 shader.vertexShader = 'attribute float alpha;\n' + shader.vertexShader;
@@ -845,12 +1051,12 @@
                 p.velocity.x = (Math.random() - 0.5) * 0.5;
                 p.velocity.y = (Math.random() - 0.5) * 0.5;
                 p.life = p.maxLife;
-                
+
                 const color = trailPalette[Math.floor(Math.random() * trailPalette.length)];
                 trailColors[currentParticle * 3] = color.r;
                 trailColors[currentParticle * 3 + 1] = color.g;
                 trailColors[currentParticle * 3 + 2] = color.b;
-                
+
                 currentParticle = (currentParticle + 1) % trailParticles;
             }
 
@@ -906,10 +1112,10 @@
         } catch (error) {
             console.error("Erro ao inicializar o fundo animado:", error);
             const canvas = document.getElementById('bg-canvas');
-            if(canvas) canvas.style.display = 'none';
+            if (canvas) canvas.style.display = 'none';
         }
     </script>
-     <script>
+    <script>
         // --- Lógica de Navegação SPA (Single Page Application) ---
         document.addEventListener('DOMContentLoaded', () => {
             const pageContainer = {
@@ -1041,7 +1247,7 @@
                 card.addEventListener('click', () => {
                     const postId = card.dataset.post;
                     const postData = posts[postId];
-                    
+
                     if (postData) {
                         document.getElementById('post-image').src = postData.image;
                         document.getElementById('post-title').textContent = postData.title;
@@ -1060,4 +1266,5 @@
     </script>
 
 </body>
+
 </html>
