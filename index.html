@@ -203,6 +203,7 @@
         .prose-custom p {
             line-height: 1.7;
             text-align: justify;
+            hyphens: auto; /* Hifenização automática para melhor justificação */
         }
 
         .prose-custom a {
@@ -215,12 +216,12 @@
 
         /* Animação para cards */
         .animated-card,
-        .blog-post {
+        .blog-post, .post-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .animated-card:hover,
-        .blog-post:hover {
+        .blog-post:hover, .post-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
         }
@@ -287,7 +288,6 @@
                 <button
                     class="chat-btn w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors"
                     data-target="#servicos">Nossos Serviços</button>
-                <!-- MUDANÇA: Botão agora é um link para o WhatsApp -->
                 <a href="https://wa.me/5571992976844?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
                     target="_blank"
                     class="block w-full text-left bg-gray-700/50 hover:bg-gray-700 p-2 rounded-lg transition-colors">Pedir
@@ -575,7 +575,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Post 1 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-1">
                             <img src="images/cards/seo.jpg"
                                 alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
                                 class="w-full h-48 object-cover">
@@ -588,7 +588,7 @@
                             </div>
                         </article>
                         <!-- Post 2 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-2">
                             <img src="images/cards/design.jpg"
                                 alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
                                 class="w-full h-48 object-cover">
@@ -601,7 +601,7 @@
                             </div>
                         </article>
                         <!-- Post 3 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-3">
                             <img src="images/cards/desenvolvimento.jpg"
                                 alt="Tela de computador exibindo linhas de código de programação"
                                 class="w-full h-48 object-cover">
@@ -702,7 +702,7 @@
                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Post Card 1 -->
                         <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-1">
                             <img src="images/cards/seo.jpg"
                                 alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
@@ -715,7 +715,7 @@
                         </article>
                         <!-- Post Card 2 -->
                         <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-2">
                             <img src="images/cards/design.jpg"
                                 alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
@@ -728,7 +728,7 @@
                         </article>
                         <!-- Post Card 3 -->
                         <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-3">
                             <img src="images/cards/desenvolvimento.jpg"
                                 alt="Tela de computador exibindo linhas de código de programação"
@@ -741,7 +741,7 @@
                         </article>
                         <!-- Post Card 4 -->
                         <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-4">
                             <img src="images/cards/seguranca.jpg"
                                 alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança"
@@ -754,7 +754,7 @@
                         </article>
                         <!-- Post Card 5 -->
                         <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer transition-transform hover:scale-105"
+                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-5">
                             <img src="images/cards/tendencias.jpg"
                                 alt="Homem utilizando óculos de realidade virtual em um ambiente futurista"
@@ -1144,6 +1144,9 @@
                         <p>Uma boa estrutura de links internos ajuda o Google a entender a hierarquia do seu site e a distribuir a autoridade entre suas páginas. Sempre que publicar um novo artigo, lembre-se de linkar para outras páginas relevantes dentro do seu próprio site.</p>
                         <h3 class="text-2xl font-bold mt-6 mb-2">5. Velocidade de Carregamento Lenta</h3>
                         <p>Um site lento frustra os usuários e prejudica seu ranking. Otimize o tamanho das imagens, utilize cache de navegador e considere uma CDN (Content Delivery Network) para garantir que suas páginas carreguem o mais rápido possível.</p>
+                        <div class="text-center mt-12">
+                            <a href="#contato" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">Vamos Conversar?</a>
+                        </div>
                     `
                 },
                 'post-2': {
@@ -1158,6 +1161,9 @@
                         <p><strong>Aumento da Conversão:</strong> Um site fácil de usar, que guia o usuário de forma intuitiva até a ação desejada (seja uma compra ou um cadastro), tem taxas de conversão significativamente maiores.</p>
                         <p><strong>Melhora a Retenção:</strong> Uma experiência positiva faz com que os clientes voltem. A lealdade à marca é construída sobre interações consistentes e agradáveis.</p>
                         <p><strong>Reduz Custos de Suporte:</strong> Se um produto é intuitivo, os usuários precisam de menos ajuda para usá-lo, o que diminui a carga sobre as equipes de suporte ao cliente.</p>
+                        <div class="text-center mt-12">
+                            <a href="#contato" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">Vamos Conversar?</a>
+                        </div>
                     `
                 },
                 'post-3': {
@@ -1172,6 +1178,9 @@
                         <p>Vue é conhecido por sua curva de aprendizado suave e documentação exemplar. Ele é frequentemente considerado mais "amigável para iniciantes" do que o React. Sua estrutura progressiva permite que seja adotado gradualmente em projetos existentes, oferecendo um ótimo equilíbrio entre simplicidade e poder.</p>
                         <h3 class="text-2xl font-bold mt-6 mb-2">Conclusão</h3>
                         <p>Para equipes grandes que precisam de máxima flexibilidade e um ecossistema robusto, <strong>React</strong> pode ser a melhor escolha. Para projetos que precisam de um início rápido, uma curva de aprendizado menor e uma integração fácil, <strong>Vue</strong> se destaca. Ambos são excelentes e a escolha final muitas vezes se resume à preferência da equipe e aos requisitos específicos do projeto.</p>
+                        <div class="text-center mt-12">
+                            <a href="#contato" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">Vamos Conversar?</a>
+                        </div>
                     `
                 },
                 'post-4': {
@@ -1186,6 +1195,9 @@
                         <p>Ative o 2FA em todos os serviços que o oferecem. Isso adiciona uma camada extra de segurança, exigindo um segundo código (geralmente do seu celular) para fazer login, mesmo que alguém tenha roubado sua senha.</p>
                         <h3 class="text-2xl font-bold mt-6 mb-2">3. Backups Regulares</h3>
                         <p>Faça backups regulares de todos os seus dados importantes. Em caso de um ataque de ransomware, onde seus arquivos são "sequestrados", um backup recente é a sua melhor e, por vezes, única forma de recuperação sem pagar resgate.</p>
+                        <div class="text-center mt-12">
+                            <a href="#contato" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">Vamos Conversar?</a>
+                        </div>
                     `
                 },
                 'post-5': {
@@ -1204,6 +1216,9 @@
                         <p>Como uma reação aos designs corporativos excessivamente limpos e padronizados, veremos um ressurgimento do brutalismo digital. Pense em layouts crus, tipografia forte e uma estética que remete aos primórdios da web, mas com uma execução moderna e intencional que transmite autenticidade.</p>
                         <h3 class="text-2xl font-bold mt-6 mb-2">5. Scrollytelling</h3>
                         <p>Mais do que apenas rolar uma página, o "scrollytelling" usa a ação de rolagem para guiar o usuário através de uma narrativa visual. Animações são acionadas, gráficos se constroem e a história se desenrola à medida que você avança, transformando uma simples página em uma jornada interativa e memorável.</p>
+                        <div class="text-center mt-12">
+                            <a href="#contato" class="nav-link bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 duration-300 inline-block">Vamos Conversar?</a>
+                        </div>
                     `
                 }
             };
@@ -1243,7 +1258,7 @@
             });
 
             // Lida com cliques nos cards de post
-            document.querySelectorAll('.post-card').forEach(card => {
+            document.querySelectorAll('.post-card, .blog-post').forEach(card => {
                 card.addEventListener('click', () => {
                     const postId = card.dataset.post;
                     const postData = posts[postId];
