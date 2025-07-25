@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N47KG3RN');</script>
+    <!-- End Google Tag Manager -->
+
     <!-- Metatags de SEO Essenciais (Serão atualizadas dinamicamente) -->
     <title>Zenith Labs - Soluções digitais que geram resultados reais.</title>
     <meta id="meta-description" name="description"
@@ -203,7 +214,8 @@
         .prose-custom p {
             line-height: 1.7;
             text-align: justify;
-            hyphens: auto; /* Hifenização automática para melhor justificação */
+            hyphens: auto;
+            /* Hifenização automática para melhor justificação */
         }
 
         .prose-custom a {
@@ -216,30 +228,27 @@
 
         /* Animação para cards */
         .animated-card,
-        .blog-post, .post-card {
+        .blog-post,
+        .post-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .animated-card:hover,
-        .blog-post:hover, .post-card:hover {
+        .blog-post:hover,
+        .post-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C0J7VBY6VZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-C0J7VBY6VZ');
-    </script>
 </head>
 
 <body class="text-slate-100">
 
     <canvas id="bg-canvas"></canvas>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N47KG3RN" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Mascote Nexus com Balão de Fala -->
     <div id="mascote-nexus">
@@ -575,7 +584,8 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Post 1 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-1">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer"
+                            data-post="post-1">
                             <img src="images/cards/seo.jpg"
                                 alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
                                 class="w-full h-48 object-cover">
@@ -588,7 +598,8 @@
                             </div>
                         </article>
                         <!-- Post 2 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-2">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer"
+                            data-post="post-2">
                             <img src="images/cards/design.jpg"
                                 alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
                                 class="w-full h-48 object-cover">
@@ -601,7 +612,8 @@
                             </div>
                         </article>
                         <!-- Post 3 -->
-                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer" data-post="post-3">
+                        <article class="blog-post bg-gray-800 rounded-lg overflow-hidden fade-in-section cursor-pointer"
+                            data-post="post-3">
                             <img src="images/cards/desenvolvimento.jpg"
                                 alt="Tela de computador exibindo linhas de código de programação"
                                 class="w-full h-48 object-cover">
@@ -701,8 +713,7 @@
                     </div>
                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Post Card 1 -->
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-1">
                             <img src="images/cards/seo.jpg"
                                 alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
@@ -714,8 +725,7 @@
                             </div>
                         </article>
                         <!-- Post Card 2 -->
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-2">
                             <img src="images/cards/design.jpg"
                                 alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
@@ -727,8 +737,7 @@
                             </div>
                         </article>
                         <!-- Post Card 3 -->
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-3">
                             <img src="images/cards/desenvolvimento.jpg"
                                 alt="Tela de computador exibindo linhas de código de programação"
@@ -740,8 +749,7 @@
                             </div>
                         </article>
                         <!-- Post Card 4 -->
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-4">
                             <img src="images/cards/seguranca.jpg"
                                 alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança"
@@ -753,8 +761,7 @@
                             </div>
                         </article>
                         <!-- Post Card 5 -->
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-5">
                             <img src="images/cards/tendencias.jpg"
                                 alt="Homem utilizando óculos de realidade virtual em um ambiente futurista"
