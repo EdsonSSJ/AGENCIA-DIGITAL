@@ -638,6 +638,7 @@
                     </div>
                     <div class="max-w-2xl mx-auto fade-in-section">
                         <form action="https://formspree.io/f/movlewaa" method="POST" class="space-y-6">
+                            <input type="hidden" name="_next" value="https://www.zenithlabs.com.br/obrigado.html">
                             <div><label for="name" class="sr-only">Nome</label><input type="text" name="name" id="name"
                                     placeholder="Seu nome" required
                                     class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -648,8 +649,8 @@
                             </div>
                             <div>
                                 <label for="phone" class="sr-only">Telefone</label>
-                                <input type="tel" name="phone" id="phone" placeholder="Seu telefone (XX) XXXXX-XXXX" required
-                                    maxlength="15"
+                                <input type="tel" name="phone" id="phone" placeholder="Seu telefone (XX) XXXXX-XXXX"
+                                    required maxlength="15"
                                     class="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                             <div><label for="message" class="sr-only">Mensagem</label><textarea name="message"
@@ -674,8 +675,7 @@
                         </p>
                     </div>
                     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-1">
                             <img src="images/cards/seo.jpg"
                                 alt="Gráfico com palavras-chave e lupas representando uma análise de SEO"
@@ -686,8 +686,7 @@
                                 </h2>
                             </div>
                         </article>
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-2">
                             <img src="images/cards/design.jpg"
                                 alt="Pessoa desenhando o wireframe de um aplicativo em um tablet"
@@ -698,8 +697,7 @@
                                     Negócios</h2>
                             </div>
                         </article>
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-3">
                             <img src="images/cards/desenvolvimento.jpg"
                                 alt="Tela de computador exibindo linhas de código de programação"
@@ -710,8 +708,7 @@
                                     projeto?</h2>
                             </div>
                         </article>
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-4">
                             <img src="images/cards/seguranca.jpg"
                                 alt="Cadeado digital sobre um circuito eletrônico, representando cibersegurança"
@@ -722,8 +719,7 @@
                                     Essencial</h2>
                             </div>
                         </article>
-                        <article
-                            class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
+                        <article class="post-card bg-gray-800/50 rounded-lg overflow-hidden cursor-pointer"
                             data-post="post-5">
                             <img src="images/cards/tendencias.jpg"
                                 alt="Homem utilizando óculos de realidade virtual em um ambiente futurista"
@@ -821,7 +817,7 @@
                 if (value.length > 7) {
                     formattedValue += '-' + value.substring(7, 11);
                 }
-                
+
                 e.target.value = formattedValue;
             });
 
